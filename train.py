@@ -89,7 +89,7 @@ def train(rank, args, shared_model, optimizer=None):
         for i in reversed(range(len(rewards))):
             R = args.gamma * R + rewards[i]
             advantage = R - values[i]
-            value_loss = value_loss + 0.5 * advantage.pow(2)
+            value_loss = value_loss + advantage.pow(2)
 
             # Generalized Advantage Estimataion
             delta_t = rewards[i] + args.gamma * \
